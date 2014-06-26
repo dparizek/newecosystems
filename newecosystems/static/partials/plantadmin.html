@@ -1,0 +1,17 @@
+<div ng-controller="PlantAdminCtrl">
+<h4>Plant Admin</h4>
+<div class="row">
+	<div class="col-md-12 text-center" ng-show="!plantList">Loading...</div>
+		<form class="form-inline" role="form" ng-show="plantList">
+			<label for="filterPlants">Filter: </label>
+			<input type="text" id="filterPlants" ng-model="filterOptions.filterText">
+		</form>
+		<h4>You have selected {{ plantSelection.length }} plant<span ng-show="plantSelection.length != 1">s</span> of {{ plantList.length }} total available.</h4>
+	<div class="gridStyle" ng-grid="plantListGrid" ng-show="plantList"></div>
+
+	<br>
+	<button type="button" class="btn btn-primary">Save Changes</button>
+	<button type="button" class="btn btn-success">Add New</button>
+	<button type="button" class="btn btn-danger">Delete Selected</button>
+
+</div>

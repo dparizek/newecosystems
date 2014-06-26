@@ -1,0 +1,9 @@
+<div class="panel panel-info" ng-controller="PrunedListCtrl">
+    <div class="panel-heading">Pruned List - {{ testvalue }}</div>
+    <div class="panel-body">
+        <div ng-repeat="plant in prunedList" ng-show="prunedList">
+        	{{ plant.id }}
+                 
+        </div>
+    </div>
+</div>

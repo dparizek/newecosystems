@@ -1,0 +1,68 @@
+body {
+    padding-top: 70px;
+}
+.footer {
+    border-top: 1px solid #dddddd;
+}
+.footer a {
+    padding-top: 20px; /* re-center stupid images */
+}
+#footer > div > div {
+    padding-top: 15px; /* re-center stupid images */
+}
+.prettygrid {
+    border: 1px solid #dddddd;
+    width: 96.66666666666667%;
+    height: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+a > i.pull-left.fa {
+    margin-left: 12px;
+    margin-right: -12px;
+    line-height: 1.5em;
+}
+button > i.pull-left.fa {
+    margin-left: 12px;
+    margin-right: -12px;
+    line-height: 1.5;
+}
+button > span.pull-left.fa-stack {
+    margin-left: 12px;
+    margin-right: -12px;
+}
+.button-group button {
+    margin-right: 5px;
+}
+html, body {
+    height: 100%;
+}
+/* Wrapper for page content to push down footer */
+#wrap {
+    min-height: 100%;
+    height: auto;
+    height: 100%;
+    /* Negative indent footer by it's height */
+    margin: 0 auto -80px;
+}
+/* Set the fixed height of the footer here */
+#push, #footer {
+    height: 80px;
+}
+.col-btn {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 15px;
+}
+.form-btn {
+    margin-top: 25px;
+}
+
+
+
+
+
+
+

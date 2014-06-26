@@ -1,0 +1,25 @@
+StrikeBatches to prune an LBT from N nodes to S nodes:
+ 
+Calculate least branching tree (LBT) --- see below.
+Order LBT's edges by length (LONGEST first)
+Strike SHORTER half of the edges. [If LBT has an odd number of edges, x, strike the shortest (x - 1)/2]
+Recalculate LBT of the remaining (LONGER) half
+Re-order (LONGEST first)
+Strike SHORTER half of these.
+Repeat the loop until LBT contains fewer than 2S edges (where S is the number desired in the set).
+Use S-1 LONGEST edges remaining.
+Return the list of nodes attached to these edges.
+----------------------------
+ 
+Kruskal method for calculating LeastBranchingTree:
+ 
+Calculate the lengths of all edges.
+Order from smallest to largest.
+Choose first 2 edges.
+Examine edge 3 and add it iff one or both of its nodes is not part of either of the first 2 edges.
+Examine edge 4 and add it iff one or both of its nodes is not part of any of the previously added edges.
+Examine edge 5 and add it iff one or both of its nodes is not part of any of the previously added edges.
+.
+.
+.
+Stop when the tree contains N-1 edges. This constitutes the LBT.

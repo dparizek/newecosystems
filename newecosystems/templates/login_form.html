@@ -1,0 +1,27 @@
+{% load url from future %}
+{% load widget_tweaks %}
+{% load i18n %}
+<form class="navbar-form navbar-right" action="{% url 'userena.views.signin' %}" method="post">
+    {% csrf_token %}
+    {% for field in LOGIN_FORM %}
+    {% if field.name == 'identification' %}
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="Email" id="id_{{ field.html_name }}" name="{{ field.html_name }}">
+    </div>
+    {% endif %}
+    {% if field.name == 'password' %}
+    <div class="form-group">
+        <input type="password" class="form-control" placeholder="Password" id="id_{{ field.html_name }}" name="{{ field.html_name }}">
+    </div>
+    {% endif %}
+    {% if field.name == 'remember_me' %}
+    {% comment %} Could use this, but it really mucks up the navbar...
+    <div class="checkbox">
+        <label>{{ field }}&nbsp;<span class="navbar-checkbox-label">{{ field.label }}</span></label>
+    </div>
+    {% endcomment %}
+    {% endif %}
+    {% endfor %}
+    <button type="submit" class="btn btn-success">{% trans "Signin" %}</button>
+    {% if next %}<input type="hidden" name="next" value="{{ next }}" />{% endif %}
+</form>

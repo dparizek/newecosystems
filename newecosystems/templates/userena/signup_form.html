@@ -1,0 +1,17 @@
+{% extends 'userena/base_userena.html' %}
+{% load i18n %}
+{% load bootstrap3 %}
+
+{% block title %}{% trans "Signup" %}{% endblock %}
+
+{% block content %}
+<form action="" method="post">
+  {% csrf_token %}
+  <fieldset>
+    <legend>{% trans "Signup" %}</legend>
+    {{ form.non_field_errors }}
+    {{ form|bootstrap3 }}
+  </fieldset>
+  <input type="submit" class="btn btn-success" value="{% trans "Signup"%}" />
+</form>
+{% endblock %}

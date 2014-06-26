@@ -1,0 +1,25 @@
+<div ng-app="fileUpload">
+    <div ng-show="dropSupported" class="drop-box row-fluid" ng-file-drop="onFileSelect($files);" ng-file-drop-available="dropSupported=true">
+        <div class="span12 text-center">
+            <div class="fileinputs">
+                <input id="file-upload-btn" class="file" type="file" ng-file-select="onFileSelect($files)" multiple />
+	            <div class="fakefile">
+                    <button id="file-upload-btn" class="btn">Click to upload.</button>
+	            </div>
+            </div>
+            Or Drag & Drop files here
+        </div>
+        <div class="span3 text-center">
+            <div ng-show="selectedFiles != null">
+                <div class="sel-file" ng-repeat="f in selectedFiles">
+                    Progress: {{progress[$index]}}<br/>
+                </div>
+		    </div>
+        </div>
+    </div>
+    <div ng-show="!dropSupported">HTML5 Drop File is not supported!</div>
+    <hr>
+    <div>
+        <div class="prettygrid space10" ng-grid="filesGrid"></div>
+    </div>
+</div>

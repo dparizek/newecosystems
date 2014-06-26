@@ -1,0 +1,88 @@
+<div ng-controller="PlantCtrl">
+<h4>Plant Chooser</h4>
+<div class="row">
+	<div class="col-md-12 text-center" ng-show="!plantList">Loading...</div>
+		<form class="form-inline" role="form" ng-show="plantList">
+			<label for="filterPlants">Filter: </label>
+			<input type="text" id="filterPlants" ng-model="filterOptions.filterText">
+		</form>
+		<h4>You have selected {{ plantSelection.length }} plant<span ng-show="plantSelection.length != 1">s</span> of {{ plantList.length }} total available.</h4>
+	<div class="prettygrid" ng-grid="plantListGrid" ng-show="plantList"></div>
+</div>
+<br>
+<form novalidate class="form-inline" name="plantListForm" role="form" ng-show="plantList">
+<div class="row"> 
+	<div class="col-md-3">           
+		<div class="form-group" ng-class="{ 'has-error': fieldInvalid('plantListForm', 'number_results') }">
+			<label class="control-label ng-binding" for="number_results">Number Desired (in pruned list)</label>
+			<input type="number" class="form-control ng-valid-number ng-valid-min ng-valid-max ng-dirty ng-valid ng-valid-required" id="number_results" name="number_results" ng-model="numberResults" min="8" max="40">
+		</div>
+	</div>
+	<div class="col-md-3">
+	    <div class="form-group" ng-class="{ 'has-error': fieldInvalid('plantListForm', 'pruning_method') }">
+	        <label class="control-label ng-binding" for="pruning_method">Pruning Method</label>
+	        <select class="form-control ng-pristine ng-invalid ng-invalid-required" id="pruning_method" name="pruning_method" ng-model="pruning_method" required>
+	            <option value="pairwise">Pairwise</option>
+	            <option value="strikebatch">StrikeBatch</option>
+	        </select>
+	    </div>
+	</div>
+	<div class="col-md-3">
+	    <div class="form-group">
+	    	<label class="control-label" for="characters">Characters (at least one)</label><br/>
+	        <label class="control-label" for="character_forbtotree">
+	    	<input type="checkbox" ng-model="character_forbtotree">
+	    		Habit
+	  		</label><br/>
+	  		<label class="control-label" for="character_annualness">
+	    	<input type="checkbox" ng-model="character_annualness">
+	    		Longevity
+	  		</label><br/>
+	  		<label class="control-label" for="character_waterneeds">
+	    	<input type="checkbox" ng-model="character_waterneeds">
+	    		Water Needs
+	  		</label><br/>
+	  		<label class="control-label" for="character_commonality">
+	    	<input type="checkbox" ng-model="character_commonality">
+	    		Commonality
+	  		</label><br/>
+	  	</div>
+	</div>
+	<div class="col-md-3">
+		<button type="button" class="btn btn-primary" ng-click="getPrunedPlantList()" ng-disabled="!readyGetList()">Get Pruned Plant List</button>
+	</div>
+
+</div>
+</form>
+<br>
+<div class="row" >
+	<div class="col-md-12">
+		<div class="panel panel-info">
+			<div class="panel-heading">Results - Your Pruned List:</div>
+			<div class="panel-body">
+				<div ng-repeat="plant in prunedResults" ng-show="prunedResults.length">
+		        	{{$index + 1}}. <a href="{{ plant.firefly_url }}" target="_blank">{{ plant.common_name }}</a>
+		        </div>
+		        <hr>
+		        <div class="resultParameters" ng-show="prunedResults.length">
+		            <h4>Result Parameters / Stats</h4>
+		        	<p><strong>Characters used:</strong> {{ charactersUsed }}</p>
+		        	<p><strong>Result Edges:</strong>
+		        	<ul>
+		        		<li ng-repeat="resultEdge in resultEdges">{{ resultEdge }}</li>
+		        	</ul>
+		        	</p>
+		       		<p><strong>MST:</strong>
+		        	<ul>
+		        		<li ng-repeat="item in mstReport">{{ item }}</li>
+		        	</ul>
+		        	</p>
+		        </div>
+		        <p ng-hide="prunedResults.length">Filter plants of interest and fill out the form above.  Then click the "Get Pruned Plant List" button to your pruned plant list here.</p>
+		        <h4 ng-show="prunedResults.length">Happy Planting!</h4>
+	        </div>
+		</div>
+	</div>
+</div>
+
+</div>
